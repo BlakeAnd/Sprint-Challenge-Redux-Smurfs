@@ -5,7 +5,9 @@ import {
   GET_SMURF_START,
   GET_SMURF_SUCCESS,
   GET_SMURF_ERROR,
-  ADD_SMURF
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_ERROR
 } from '../actions';
 
  //Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -38,12 +40,25 @@ function reducer (state = initialState, action){
           fetchingSmurfs: false,
           error: "ERRORY SMURF!"
         }
-        case ADD_SMURF:
-            return {
-              ...state,
-              fetchingSmurfs: false,
-              smurfs: [...state.smurfs, {value: action.payload}]
-            }
+        case ADD_SMURF_START:
+        return {
+          ...state,
+          error: null,
+          fetchingSmurfs: true
+        }
+        case ADD_SMURF_SUCCESS:
+        return {
+          ...state,
+          fetchingSmurfs: false,
+          smurfs: [...state.smurfs, {value: action.payload}]
+        }
+        case ADD_SMURF_ERROR:
+        return {
+          ...state,
+          fetchingSmurfs: false,
+          error: "ERRORY SMURF!"
+        }
+        
       default:
           return state;
     }

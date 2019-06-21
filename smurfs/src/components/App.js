@@ -30,6 +30,7 @@ class App extends Component {
     
     handleAdd = e => {
       e.preventDefault();
+      console.log("post state: ", this.state.smurf);
       this.props.addSmurf(this.state.smurf);
       this.setState({ smurf: ""})
     }
@@ -41,10 +42,15 @@ class App extends Component {
         {console.log("state", this.state)}
         <h1>smurfs</h1>
         {this.props.smurfs.map( e  => (
-        <div>
-          {console.log("value: ", e.value.name)}
-          <p>{this.props.age}</p>
-        </div>
+          e.value.map( e => (
+          <div>
+            {console.log("value: ", e.name)}
+            <p>name: {e.name}</p>
+            <p>age: {e.age}</p>
+            <p>height: {e.height}</p>
+          </div>
+          ))
+        
       ))} 
 
           <button onClick={this.fetchSmurf}>smurfs</button>
