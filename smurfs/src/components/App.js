@@ -23,28 +23,28 @@ class App extends Component {
     };
 
     handleChange = e => {
-      //console.log(this.props);
+      //console.log(this.props); 
       e.preventDefault();
-      this.setState({smurf: e.target.value});
+      this.setState({[e.target.name]: e.target.value});
     }
     
     handleAdd = e => {
       e.preventDefault();
-      console.log("post state: ", this.state.smurf);
-      this.props.addSmurf(this.state.smurf);
+      console.log("post state: ", this.state);
+      this.props.addSmurf(this.state);
       this.setState({ smurf: ""})
     }
 
   render() {
     return (
       <div className="App">
-        {console.log("props", this.props.smurfs)}
+        {console.log("props", this.props)}
         {console.log("state", this.state)}
         <h1>smurfs</h1>
         {this.props.smurfs.map( e  => (
           e.value.map( e => (
           <div>
-            {console.log("value: ", e.name)}
+            {/*console.log("value: ", e.name)*/}
             <p>name: {e.name}</p>
             <p>age: {e.age}</p>
             <p>height: {e.height}</p>
@@ -60,18 +60,21 @@ class App extends Component {
           value={this.props.name}
           onChange={this.handleChange}
           placeholder="name"
+          name="name"
         />
         <input 
           type="text"
           value={this.props.age}
           onChange={this.handleChange}
           placeholder="age"
+          name="age"
         />
         <input 
           type="text"
           value={this.props.height}
           onChange={this.handleChange}
           placeholder="height"
+          name="height"
         />
         <button type="submit">add</button>
       </form>

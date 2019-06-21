@@ -23,7 +23,7 @@ export const ADD_SMURF_START = 'GET_SMURF_START';
 export const ADD_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const ADD_SMURF_ERROR = 'GET_SMURF_ERROR';
 //date =>
-export const addSmurf = (date, smurf) => dispatch => {
+export const addSmurf = smurf => dispatch => {
   dispatch({ type: ADD_SMURF_START });
   axios
     .post(`http://localhost:3333/smurfs`, smurf)
