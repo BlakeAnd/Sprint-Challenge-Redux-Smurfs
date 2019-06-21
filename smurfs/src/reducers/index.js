@@ -56,7 +56,7 @@ function reducer (state = initialState, action){
         return {
           ...state,
           fetchingSmurfs: false,
-          error: "ERRORY SMURF!"
+          error: "ERRORY ADD SMURF!"
         }
         
       default:

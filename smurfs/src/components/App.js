@@ -9,17 +9,14 @@ import { getSmurf, addSmurf } from '../actions';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-  // state = {
-  //   smurf: {
-  //     name: "",
-  //     age: "",
-  //     height: ""
-  //   }
-  // }
+  state = {
+      name: "",
+      age: "",
+      height: ""
+  }
   componentDidMount() {
     this.fetchSmurf();
   }
-  
     fetchSmurf = e => {
       //e.preventDefault();
       this.props.getSmurf();
@@ -35,7 +32,7 @@ class App extends Component {
       e.preventDefault();
       console.log("post state: ", this.state);
       this.props.addSmurf(this.state);
-      this.setState({ smurf: ""})
+      this.setState({ name: '', age: '', height: ''})
     }
 
   render() {
