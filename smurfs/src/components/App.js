@@ -17,8 +17,8 @@ class App extends Component {
   componentDidMount() {
     this.fetchSmurf();
   }
-    fetchSmurf = e => {
-      //e.preventDefault();
+
+    fetchSmurf = () => {
       this.props.getSmurf();
     };
 
@@ -33,11 +33,14 @@ class App extends Component {
       console.log("post state: ", this.state);
       this.props.addSmurf(this.state);
       this.setState({ name: '', age: '', height: ''})
+      window.location.reload();
     }
 
   render() {
     return (
       <div className="App" >
+        {this.props.fetchingSmurfs && (<p>loading</p>)}
+
         {console.log("props", this.props)}
         {console.log("state", this.state)}
         <h1>smurfs</h1>

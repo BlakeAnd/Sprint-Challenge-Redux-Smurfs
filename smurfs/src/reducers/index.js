@@ -44,18 +44,18 @@ function reducer (state = initialState, action){
         return {
           ...state,
           error: null,
-          fetchingSmurfs: true
+          addingSmurf: true
         }
         case ADD_SMURF_SUCCESS:
         return {
           ...state,
-          fetchingSmurfs: false,
+          addingSmurf: false,
           smurfs: [...state.smurfs, {value: action.payload}]
         }
         case ADD_SMURF_ERROR:
         return {
           ...state,
-          fetchingSmurfs: false,
+          addingSmurf: false,
           error: "ERRORY ADD SMURF!"
         }
         
