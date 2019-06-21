@@ -16,9 +16,12 @@ class App extends Component {
   //     height: ""
   //   }
   // }
+  componentDidMount() {
+    this.fetchSmurf();
+  }
   
     fetchSmurf = e => {
-      e.preventDefault();
+      //e.preventDefault();
       this.props.getSmurf();
     };
 
@@ -37,13 +40,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" >
         {console.log("props", this.props)}
         {console.log("state", this.state)}
         <h1>smurfs</h1>
         {this.props.smurfs.map( e  => (
           e.value.map( e => (
-          <div>
+          <div className="item"> 
             {/*console.log("value: ", e.name)*/}
             <p>name: {e.name}</p>
             <p>age: {e.age}</p>
@@ -53,7 +56,7 @@ class App extends Component {
         
       ))} 
 
-          <button onClick={this.fetchSmurf}>smurfs</button>
+          
       <form onSubmit={this.handleAdd}>
           <input 
           type="text"
