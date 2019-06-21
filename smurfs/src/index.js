@@ -4,13 +4,18 @@ import './index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, /*compose*/ } from 'redux';
 import { Provider } from 'react-redux';
-import /* You need some sort of reducer */ './reducers';
+/* You need some sort of reducer below */
+import  rootReducer from './reducers';
+
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  //() => {}, // this is the most basic reducer. A function that returns and object. Replace it.
+  rootReducer,
+  applyMiddleware(/* be sure to throw in the proper middlewares here*/ 
+    thunk, logger)
 );
 
 ReactDOM.render(
